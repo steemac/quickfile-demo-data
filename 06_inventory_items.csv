@@ -1,0 +1,15 @@
+Item Name,Description,Unit Price,VAT Rate,Sales Nominal Code,Purchase Price,Purchase Nominal Code,Quantity In Stock
+HOUSE-ESP-1KG,House Espresso Blend - roasted whole bean 1kg,18.50,0,4000,8.20,5000,120
+COL-SO-1KG,Colombia Huila Single Origin - roasted whole bean 1kg,22.00,0,4000,10.40,5000,60
+ETH-YIR-1KG,Ethiopia Yirgacheffe Single Origin - roasted whole bean 1kg,24.50,0,4000,11.80,5000,40
+BRA-SAN-1KG,Brazil Santos - roasted whole bean 1kg,17.00,0,4000,7.60,5000,80
+DECAF-1KG,Swiss Water Decaf - roasted whole bean 1kg,21.00,0,4000,10.10,5000,30
+HOUSE-ESP-6KG,House Espresso Blend - bulk bag 6kg,99.00,0,4000,46.50,5000,15
+RETAIL-250G,Retail bag 250g - assorted origins,6.25,0,4000,2.70,5000,200
+OAT-1LX6,Barista oat drink 1L - case of 6,13.20,0,4000,9.00,5000,50
+CUP-8OZ-1000,Compostable paper cups 8oz - box of 1000,62.00,20,4000,38.00,5000,25
+CUP-12OZ-1000,Compostable paper cups 12oz - box of 1000,74.00,20,4000,45.00,5000,25
+LID-1000,Compostable sip lids - box of 1000,28.00,20,4000,16.50,5000,40
+GRINDER-HAND,Ceramic burr hand grinder,45.00,20,4000,24.00,5000,12
+TRAIN-HALF,Barista training - half day on site,180.00,20,4010,0.00,5000,0
+SERVICE-ESP,Espresso machine service & descale,95.00,20,4010,0.00,5000,0

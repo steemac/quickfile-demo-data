@@ -1,0 +1,31 @@
+Invoice number,Issue Date,Client name,Account Reference,Description,Sales nominal code,VAT rate,VAT amount,Total gross amount,Term in days,Purchase reference,Notes,Paid date,Paid bank nominal code
+INV-1001,04/04/2026,Bean & Gone Ltd,CL002,Ceramic burr hand grinder x 1 @ £45.00,4000,20,9.00,54.00,30,PO-8033,Thank you for your business,29/04/2026,1200
+INV-1002,10/04/2026,Brew & Bloom Florist Café,CL011,Compostable paper cups 12oz - box of 1000 x 1 @ £74.00,4000,20,14.80,88.80,30,,Thank you for your business,28/04/2026,1200
+INV-1003,19/04/2026,Northern Grind Co-operative,CL004,Compostable paper cups 8oz - box of 1000 x 3 @ £62.00,4000,20,37.20,223.20,30,,Thank you for your business,27/05/2026,1200
+INV-1004,28/04/2026,Greenwood Farm Shop,CL008,Barista training - half day on site x 1 @ £180.00,4010,20,36.00,216.00,30,,Thank you for your business,21/05/2026,1200
+INV-1004,28/04/2026,Greenwood Farm Shop,CL008,House Espresso Blend - roasted whole bean 1kg x 100 @ £18.50,4000,0,0.00,1850.00,30,,Thank you for your business,21/05/2026,1200
+INV-1005,07/05/2026,Northern Grind Co-operative,CL004,Colombia Huila Single Origin - roasted whole bean 1kg x 100 @ £22.00,4000,0,0.00,2200.00,30,,Thank you for your business,05/06/2026,1200
+INV-1005,07/05/2026,Northern Grind Co-operative,CL004,Espresso machine service & descale x 1 @ £95.00,4010,20,19.00,114.00,30,,Thank you for your business,05/06/2026,1200
+INV-1006,18/05/2026,Greenwood Farm Shop,CL008,Retail bag 250g - assorted origins x 100 @ £6.25,4000,0,0.00,625.00,30,,Thank you for your business,,
+INV-1007,27/05/2026,The Reading Room,CL010,Compostable paper cups 12oz - box of 1000 x 1 @ £74.00,4000,20,14.80,88.80,30,,Thank you for your business,15/06/2026,1200
+INV-1007,27/05/2026,The Reading Room,CL010,Brazil Santos - roasted whole bean 1kg x 100 @ £17.00,4000,0,0.00,1700.00,30,,Thank you for your business,15/06/2026,1200
+INV-1008,03/06/2026,Northern Grind Co-operative,CL004,Retail bag 250g - assorted origins x 100 @ £6.25,4000,0,0.00,625.00,30,,Thank you for your business,11/07/2026,1200
+INV-1009,12/06/2026,Moorland Hotel Group Ltd,CL006,Brazil Santos - roasted whole bean 1kg x 80 @ £17.00,4000,0,0.00,1360.00,14,PO-6375,Thank you for your business,17/06/2026,1200
+INV-1009,12/06/2026,Moorland Hotel Group Ltd,CL006,Compostable sip lids - box of 1000 x 1 @ £28.00,4000,20,5.60,33.60,14,PO-3338,Thank you for your business,17/06/2026,1200
+INV-1010,22/06/2026,Pedal & Pour Cycle Café,CL007,Compostable sip lids - box of 1000 x 1 @ £28.00,4000,20,5.60,33.60,30,,Thank you for your business,20/07/2026,1200
+INV-1010,22/06/2026,Pedal & Pour Cycle Café,CL007,Ceramic burr hand grinder x 1 @ £45.00,4000,20,9.00,54.00,30,,Thank you for your business,20/07/2026,1200
+INV-1011,30/06/2026,Moorland Hotel Group Ltd,CL006,Swiss Water Decaf - roasted whole bean 1kg x 100 @ £21.00,4000,0,0.00,2100.00,14,PO-3741,Thank you for your business,21/07/2026,1200
+INV-1011,30/06/2026,Moorland Hotel Group Ltd,CL006,Colombia Huila Single Origin - roasted whole bean 1kg x 120 @ £22.00,4000,0,0.00,2640.00,14,PO-5241,Thank you for your business,21/07/2026,1200
+INV-1012,10/07/2026,Greenwood Farm Shop,CL008,Swiss Water Decaf - roasted whole bean 1kg x 100 @ £21.00,4000,0,0.00,2100.00,30,,Thank you for your business,14/08/2026,1200
+INV-1013,19/07/2026,The Reading Room,CL010,Compostable paper cups 12oz - box of 1000 x 3 @ £74.00,4000,20,44.40,266.40,30,,Thank you for your business,10/08/2026,1200
+INV-1013,19/07/2026,The Reading Room,CL010,Retail bag 250g - assorted origins x 60 @ £6.25,4000,0,0.00,375.00,30,,Thank you for your business,10/08/2026,1200
+INV-1014,26/07/2026,Bean & Gone Ltd,CL002,Compostable sip lids - box of 1000 x 1 @ £28.00,4000,20,5.60,33.60,30,PO-5152,Thank you for your business,26/08/2026,1200
+INV-1015,05/08/2026,The Reading Room,CL010,Compostable paper cups 8oz - box of 1000 x 1 @ £62.00,4000,20,12.40,74.40,30,,Thank you for your business,23/08/2026,1200
+INV-1015,05/08/2026,The Reading Room,CL010,Swiss Water Decaf - roasted whole bean 1kg x 100 @ £21.00,4000,0,0.00,2100.00,30,,Thank you for your business,23/08/2026,1200
+INV-1016,15/08/2026,Moorland Hotel Group Ltd,CL006,Swiss Water Decaf - roasted whole bean 1kg x 60 @ £21.00,4000,0,0.00,1260.00,14,PO-9813,Thank you for your business,01/09/2026,1200
+INV-1017,24/08/2026,Harbour Lights Restaurant,CL012,Compostable paper cups 8oz - box of 1000 x 2 @ £62.00,4000,20,24.80,148.80,30,,Thank you for your business,14/09/2026,1200
+INV-1017,24/08/2026,Harbour Lights Restaurant,CL012,Barista training - half day on site x 1 @ £180.00,4010,20,36.00,216.00,30,,Thank you for your business,14/09/2026,1200
+INV-1018,01/09/2026,Little Loaf Bakery,CL003,Compostable paper cups 12oz - box of 1000 x 1 @ £74.00,4000,20,14.80,88.80,30,,Thank you for your business,,
+INV-1019,09/09/2026,Moorland Hotel Group Ltd,CL006,Brazil Santos - roasted whole bean 1kg x 60 @ £17.00,4000,0,0.00,1020.00,14,PO-2701,Thank you for your business,,
+INV-1019,09/09/2026,Moorland Hotel Group Ltd,CL006,House Espresso Blend - roasted whole bean 1kg x 120 @ £18.50,4000,0,0.00,2220.00,14,PO-8684,Thank you for your business,,
+INV-1020,18/09/2026,Campus Coffee Ltd,CL009,Ethiopia Yirgacheffe Single Origin - roasted whole bean 1kg x 80 @ £24.50,4000,0,0.00,1960.00,14,PO-4171,Thank you for your business,,

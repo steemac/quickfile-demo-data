@@ -1,0 +1,52 @@
+N/C,Name,Debit,Credit
+101,Plant and Machinery - Roaster,18500.00,
+102,Plant and Machinery Depreciation,,4625.00
+105,Office Equipment,1250.00,
+106,Computer Equipment,1950.00,
+107,Office & Computer Equip Depreciation,,960.00
+120,Stock - Green Beans,3150.00,
+121,Stock - Roasted Coffee,4100.00,
+122,Stock - Packaging,1200.00,
+130,Debtors Control Account,6840.00,
+135,Prepayments,450.00,
+150,Barclays Business Current,24315.60,
+151,Barclays Business Savings,10000.00,
+155,Petty Cash,85.00,
+210,Creditors Control Account,,3960.00
+215,Accruals,,1150.00
+220,Sales Tax Control Account,,4210.55
+221,Purchase Tax Control Account,1340.15,
+230,P.A.Y.E.,,1012.00
+231,National Insurance,,438.00
+232,Pension Fund,,180.00
+240,Corporation Tax,,5850.00
+250,Director's Loan - J Harper,,5000.00
+310,Ordinary Shares,,100.00
+320,Profit and Loss Account,,26524.60
+401,Sales - Wholesale Coffee,,118400.00
+402,Sales - Retail Online,,14250.00
+410,Sales - Barista Training,,6300.00
+411,Sales - Machine Servicing,,3420.00
+450,Carriage Recharged,,1180.00
+501,Purchases - Green Beans,41200.00,
+502,Purchases - Packaging,9850.00,
+503,Purchases - Milk & Alternatives,3640.00,
+550,Opening Stock,7900.00,
+551,Closing Stock,,8450.00
+601,Gross Wages,32400.00,
+602,Employers N.I.,2980.00,
+603,Employers Pensions,960.00,
+620,Rent,9000.00,
+621,General Rates,2150.00,
+630,Electricity,4120.00,
+640,Motor Fuel,1860.00,
+650,Carriage & Couriers,3050.00,
+660,Telephone & Broadband,576.00,
+670,Advertising & Marketing,2300.00,
+710,Accountancy Fees,1150.00,
+720,Roaster Repairs & Servicing,1425.00,
+730,Bank Charges,318.40,
+740,Depreciation,1925.00,
+750,Donations,150.00,
+810,Corporation Tax Charge,5850.00,
+999,Suspense Account,25.00,

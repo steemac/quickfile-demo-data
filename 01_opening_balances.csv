@@ -1,0 +1,15 @@
+Nominal Code,Account Name,Debit,Credit
+0020,Plant and Machinery (coffee roaster),18500.00,
+0021,Plant and Machinery Depreciation,,4625.00
+0030,Office Equipment,3200.00,
+0031,Office Equipment Depreciation,,960.00
+1001,Stock,8450.00,
+1100,Trade Debtors,6840.00,
+1200,Bank Current Account,24315.60,
+1210,Bank Deposit Account,10000.00,
+2100,Trade Creditors,,3960.00
+2200,VAT Liability,,2870.40
+2210,PAYE and NI,,1450.00
+2300,Directors Loan Account,,5000.00
+3000,Ordinary Shares,,100.00
+3100,Retained Earnings,,52340.20
