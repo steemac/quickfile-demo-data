@@ -1,0 +1,591 @@
+<title>QuickFile Demo Data</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: QuickFile guide shell — nav, gradient hero, sticky contents rail + reading column */
+  :root{
+    --bg:#ffffff; --surface:#ffffff; --surface-alt:#f4f6f9; --border:#d7dce3;
+    --text:#1c2530; --text-muted:#616d7d;
+    --accent:#2f6feb; --accent-strong:#1f4fc4; --accent-soft:#e9f0fe;
+    --warn:#b6541c; --warn-soft:#f8e6d9; --ok:#1d7a4f; --ok-soft:#e3f3ea; --focus:#2f6feb;
+    --seg-tb:#8fb3f7; --seg-sales:#2f6feb; --seg-purch:#1a3f99; --track:#e9edf3;
+    --shadow:0 1px 2px rgba(20,30,40,.06), 0 8px 24px rgba(20,30,40,.06);
+    --brand-blue:#2f6feb; --brand-blue-dark:#1f4fc4;
+    --brand-gradient:linear-gradient(135deg,#2f5fe0 0%,#3fa0e6 100%);
+    --font-display:"Fraunces",Georgia,serif;
+    --font-body:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box;}
+  [hidden]{display:none!important;}
+  html{scroll-behavior:smooth;scroll-padding-top:20px;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;}
+  a{color:var(--accent-strong);}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+
+  .site-nav{background:var(--surface);border-bottom:1px solid #e3e8f0;}
+  .nav-inner{max-width:1220px;margin:0 auto;display:flex;align-items:center;gap:26px;padding:14px 20px;flex-wrap:wrap;}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none;}
+  .logo-img{display:block;height:28px;width:auto;}
+  .logo-badge{font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--brand-blue);background:#eaf1fe;border-radius:6px;padding:3px 8px;text-transform:uppercase;}
+  .nav-links{display:flex;align-items:center;gap:22px;margin-right:auto;flex-wrap:wrap;}
+  .nav-links a{color:#3a4658;text-decoration:none;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:6px;}
+  .nav-links a:hover{color:var(--brand-blue);}
+  .nav-actions{display:flex;align-items:center;gap:10px;flex:none;}
+  .btn-nav{display:inline-flex;align-items:center;gap:6px;background:var(--brand-blue);color:#fff;border-radius:8px;padding:8px 16px;font-size:13.5px;font-weight:700;text-decoration:none;border:1px solid var(--brand-blue);white-space:nowrap;}
+  .btn-nav:hover{background:var(--brand-blue-dark);border-color:var(--brand-blue-dark);}
+  .btn-nav.outline{background:#fff;color:var(--brand-blue);}
+  .btn-nav.outline:hover{background:#eaf1fe;}
+
+  .hero{background:var(--brand-gradient);color:#fff;}
+  .hero-inner{max-width:880px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;padding:38px 20px 44px;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:6px 16px;font-size:12.5px;font-weight:600;}
+  .hero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(26px,3.8vw,38px);line-height:1.18;margin:0;text-wrap:balance;}
+  .hero p{font-size:15px;color:rgba(255,255,255,.92);max-width:62ch;margin:0;}
+  .hero-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:6px;}
+  .hero-stat{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:10px;padding:8px 14px;font-size:13px;line-height:1.3;text-align:left;}
+  .hero-stat b{display:block;font-size:19px;font-variant-numeric:tabular-nums;}
+
+  .page{max-width:1220px;margin:0 auto;padding:28px 20px 56px;}
+  .eyebrow{color:var(--brand-blue);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;}
+  h2,h3{font-family:var(--font-display);font-weight:600;text-wrap:balance;}
+  .kbd{font-family:var(--font-mono);font-size:.86em;background:var(--surface-alt);border:1px solid var(--border);border-radius:5px;padding:1px 6px;white-space:nowrap;}
+  .path{font-weight:700;color:var(--text);}
+  .num{font-variant-numeric:tabular-nums;}
+
+  .callout{background:var(--accent-soft);border:1px solid color-mix(in srgb, var(--accent) 35%, var(--border));border-radius:10px;padding:12px 16px;font-size:14px;}
+  .callout strong:first-child{color:var(--accent-strong);}
+  .callout.warn{background:var(--warn-soft);border-color:color-mix(in srgb, var(--warn) 40%, var(--border));}
+  .callout.warn strong:first-child{color:var(--warn);}
+
+  .guide{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;align-items:start;}
+  .toc{position:sticky;top:20px;border:1px solid var(--border);border-radius:12px;padding:14px 14px 10px;background:var(--surface);box-shadow:var(--shadow);font-size:13.5px;}
+  .toc .eyebrow{margin-bottom:6px;}
+  .toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;}
+  .toc a{display:block;text-decoration:none;color:#3a4658;padding:5px 8px;border-radius:6px;font-weight:600;}
+  .toc a:hover{background:var(--surface-alt);color:var(--accent-strong);}
+  .toc ol ol{padding-left:12px;}
+  .toc ol ol a{font-weight:500;font-size:13px;color:var(--text-muted);padding:3px 8px;}
+  .content{max-width:800px;min-width:0;display:flex;flex-direction:column;gap:44px;}
+  .content section{display:flex;flex-direction:column;gap:12px;min-width:0;}
+  .content h2{font-size:26px;margin:0;line-height:1.2;}
+  .content h3{font-size:19px;margin:10px 0 0;}
+  .content p{margin:0;}
+  .content ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;}
+
+  /* tables */
+  .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--surface);box-shadow:var(--shadow);}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+  th{background:var(--surface-alt);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);white-space:nowrap;}
+  tr:last-child td{border-bottom:0;}
+  td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
+  tfoot td{font-weight:700;background:var(--surface-alt);}
+  .sample{font-family:var(--font-mono);font-size:12px;}
+  .sample td{white-space:nowrap;}
+
+  /* postings meter */
+  .meter{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--surface);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;}
+  .meter-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;}
+  .meter-head .big{font-family:var(--font-display);font-size:30px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums;}
+  .meter-head .big small{font-family:var(--font-body);font-size:14px;color:var(--text-muted);font-weight:500;}
+  .bar{position:relative;height:22px;border-radius:6px;background:var(--track);display:flex;overflow:hidden;}
+  .bar span{display:block;height:100%;}
+  .scale{position:relative;height:18px;font-size:11.5px;color:var(--text-muted);font-variant-numeric:tabular-nums;}
+  .scale span{position:absolute;top:0;transform:translateX(-50%);}
+  .scale span:first-child{transform:none;}
+  .scale span:last-child{transform:translateX(-100%);}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px;}
+
+  /* file cards */
+  .order{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:step;}
+  .order li{counter-increment:step;display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;border:1px solid var(--border);border-radius:12px;padding:14px 16px;background:var(--surface);box-shadow:var(--shadow);}
+  .order li::before{content:counter(step);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--brand-gradient);color:#fff;font-weight:800;}
+  .order h3{margin:0 0 2px;font-size:17px;}
+  .order p{font-size:14px;color:var(--text-muted);}
+
+  .file{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow);}
+  .file-head{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border);background:var(--surface-alt);}
+  .file-head h3{margin:0;font-size:18px;}
+  .file-head .fname{font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted);}
+  .file-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:12px;font-size:14.5px;min-width:0;}
+  .label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);}
+  .facts{display:flex;flex-wrap:wrap;gap:8px;}
+  .fact{border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:13px;line-height:1.3;}
+  .fact b{display:block;font-size:16px;font-variant-numeric:tabular-nums;}
+  .fact.post{border-color:color-mix(in srgb, var(--accent) 40%, var(--border));background:var(--accent-soft);}
+  .fact.post b{color:var(--accent-strong);}
+  .fact.zero{background:var(--ok-soft);border-color:color-mix(in srgb, var(--ok) 35%, var(--border));}
+  .fact.zero b{color:var(--ok);}
+  .cols{display:flex;flex-wrap:wrap;gap:6px;}
+  .cols .kbd{white-space:normal;}
+  .cols .kbd.req{border-color:var(--accent);color:var(--accent-strong);font-weight:500;}
+  .steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;}
+  .good-list{list-style:none;padding:0!important;}
+  .good-list li{border-left:3px solid var(--accent);padding:4px 0 4px 14px;}
+
+  details.file > summary{cursor:pointer;list-style:none;}
+  details.file > summary::-webkit-details-marker{display:none;}
+  details.file > summary:hover{background:#eaf0f8;}
+  details.file:not([open]) > summary{border-bottom:0;}
+  .file-head .fname{margin-left:auto;}
+  .chev{flex:none;width:10px;height:10px;border-right:2px solid var(--text-muted);border-bottom:2px solid var(--text-muted);transform:rotate(45deg);margin:0 4px 3px 4px;align-self:center;transition:transform .15s;}
+  details.file[open] .chev{transform:rotate(-135deg);margin-bottom:-3px;}
+  @media (prefers-reduced-motion: reduce){ .chev{transition:none;} }
+  .toggle-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13.5px;color:var(--text-muted);}
+  .toggle-bar span{margin-right:auto;}
+  .toggle-bar button{font:inherit;font-weight:600;color:var(--accent-strong);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:5px 12px;cursor:pointer;}
+  .toggle-bar button:hover{background:var(--accent-soft);}
+  .file-list{display:flex;flex-direction:column;gap:10px;}
+  .video-card{display:flex;gap:14px;align-items:center;border:1px solid var(--border);border-radius:12px;padding:12px 16px;background:var(--surface-alt);font-size:14px;}
+  .video-card .video-icon{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:10px;background:var(--surface);border:1px solid var(--border);}
+  .video-card a{font-weight:700;}
+  .site-foot{border-top:1px solid var(--border);margin-top:40px;padding-top:18px;color:var(--text-muted);font-size:13.5px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;}
+
+  @media (max-width:900px){ .guide{grid-template-columns:1fr;} .toc{position:static;} }
+  @media (max-width:640px){
+    .nav-inner{padding:12px 16px;justify-content:center;}
+    .nav-links{margin-right:0;justify-content:center;width:100%;order:3;gap:16px;}
+    .nav-actions{width:100%;justify-content:center;}
+    .hero-inner{padding:28px 16px 34px;}
+    .page{padding:22px 16px 44px;}
+  }
+</style>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="https://www.quickfile.co.uk/" target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1824 372" class="logo-img" width="150" height="31" role="img" aria-label="QuickFile"><g transform="translate(0.000000,372.000000) scale(0.100000,-0.100000)" fill="#4b7ff5"><path d="M2040 3443 c-177 -19 -446 -79 -565 -124 -94 -37 -136 -35 -241 7 -48 19 -72 24 -83 17 -28 -17 -59 -114 -71 -218 -9 -83 -16 -110 -46 -164 -125 -227 -107 -323 75 -397 47 -20 74 -24 170 -24 63 0 164 -5 226 -12 140 -14 170 -3 227 83 60 91 208 147 309 117 252 -76 308 -102 386 -179 47 -46 85 -95 102 -129 15 -30 45 -86 66 -125 40 -70 40 -70 40 -280 0 -210 0 -210 -37 -286 -45 -90 -46 -108 -13 -148 30 -35 84 -57 179 -71 107 -17 193 -69 211 -128 3 -12 -1 -66 -10 -120 -26 -150 2 -206 85 -172 17 7 59 51 100 106 124 162 206 357 234 559 9 61 26 155 38 210 43 191 25 384 -62 686 -39 136 -60 175 -144 271 -40 46 -87 103 -105 128 -99 137 -356 279 -588 325 -45 9 -106 25 -136 35 -42 15 -305 47 -311 38 -1 0 -17 -3 -36 -5z"/><path d="M12282 3181 c-113 -19 -141 -81 -177 -401 -24 -214 -44 -345 -66 -440 -11 -47 -24 -132 -29 -190 -23 -259 -31 -320 -54 -390 -36 -114 -65 -266 -77 -407 -5 -74 -24 -189 -43 -273 -36 -152 -46 -209 -71 -405 -18 -138 -11 -183 38 -219 27 -20 43 -21 255 -24 400 -6 392 -13 447 418 14 113 36 261 49 330 14 69 29 156 36 195 12 73 38 127 68 141 9 5 157 11 327 14 432 7 419 -1 450 271 20 178 13 238 -32 280 -24 24 -27 24 -319 29 -294 5 -294 5 -321 32 -55 55 -37 263 30 350 61 79 70 81 390 79 480 -2 467 -10 512 304 33 232 20 282 -82 306 -44 10 -1267 10 -1331 0z"/><path d="M8425 2909 c-182 -23 -231 -37 -360 -99 -55 -26 -116 -55 -135 -63 -19 -8 -56 -30 -82 -50 -26 -20 -64 -47 -85 -60 -130 -83 -356 -353 -465 -557 -19 -36 -47 -86 -62 -112 -81 -140 -127 -515 -87 -708 50 -240 59 -265 143 -376 160 -212 344 -367 498 -419 52 -18 120 -41 150 -53 100 -37 412 -46 595 -16 47 7 218 78 258 106 40 29 47 47 67 191 35 252 44 416 24 438 -25 28 -68 23 -137 -15 -161 -90 -372 -134 -494 -103 -215 56 -297 116 -377 277 -83 167 -82 325 4 544 65 166 143 273 236 326 31 18 71 46 89 62 51 44 117 68 244 89 123 20 151 19 289 -12 97 -22 114 -30 164 -75 74 -66 142 -89 170 -56 30 34 38 63 63 229 13 92 30 200 36 238 10 61 9 77 -7 124 -35 100 -95 127 -346 156 -166 18 -202 18 -393 -6z"/><path d="M709 2843 c-32 -31 -76 -81 -96 -112 -20 -31 -52 -76 -72 -101 -36 -45 -137 -219 -159 -275 -6 -16 -19 -61 -27 -99 -9 -38 -29 -97 -45 -132 -40 -88 -50 -147 -60 -324 -13 -249 2 -405 50 -510 21 -47 46 -110 55 -140 10 -30 36 -89 60 -130 23 -41 54 -95 67 -120 42 -73 228 -237 335 -295 32 -17 85 -49 118 -72 36 -26 88 -50 130 -62 39 -11 111 -35 160 -53 90 -32 90 -32 385 -32 295 1 295 1 415 42 205 70 301 86 343 56 12 -8 54 -62 92 -119 116 -173 164 -166 190 24 6 46 16 95 21 109 6 14 16 67 24 117 8 49 23 134 35 187 23 109 44 416 31 451 -5 13 -16 28 -24 35 -31 26 -360 122 -484 142 -68 11 -166 30 -216 41 -166 38 -254 49 -287 38 -57 -20 -53 -88 11 -186 78 -120 58 -203 -48 -203 -330 0 -601 226 -653 542 -34 210 7 448 101 584 75 109 36 196 -96 215 -200 27 -248 92 -195 261 39 126 22 178 -59 178 -38 0 -49 -6 -102 -57z"/><path d="M3977 2865 c-78 -27 -108 -83 -122 -225 -8 -84 -31 -246 -55 -390 -29 -172 -78 -530 -90 -655 -5 -60 -19 -156 -30 -213 -25 -131 -25 -239 1 -383 36 -203 57 -253 162 -378 92 -109 135 -134 367 -211 172 -56 643 -44 791 20 37 17 99 37 139 45 86 18 100 25 137 68 15 19 53 52 83 74 83 60 256 251 280 309 12 27 39 79 61 116 32 53 44 87 59 170 11 56 36 186 55 288 20 102 42 250 50 329 8 79 19 169 25 200 5 31 14 108 20 171 6 63 22 153 35 200 28 103 50 282 43 369 -4 55 -9 68 -33 88 -28 24 -28 24 -254 21 -299 -4 -300 -5 -326 -225 -8 -65 -21 -138 -30 -163 -21 -58 -41 -188 -61 -384 -11 -111 -29 -212 -59 -335 -24 -97 -51 -216 -60 -266 -40 -218 -92 -333 -202 -446 -88 -91 -101 -96 -284 -105 -173 -9 -186 -5 -282 94 -88 91 -92 103 -92 272 0 225 22 424 60 536 39 114 60 225 76 393 6 64 15 136 20 161 24 106 59 318 59 356 0 52 -28 90 -78 104 -57 15 -419 12 -465 -5z"/><path d="M6496 2870 c-79 -25 -110 -107 -131 -350 -3 -41 -15 -133 -26 -205 -11 -71 -37 -245 -59 -385 -21 -140 -46 -327 -55 -415 -9 -88 -29 -218 -45 -290 -32 -146 -45 -229 -60 -391 -6 -61 -19 -145 -30 -185 -54 -204 -19 -227 328 -217 274 8 279 14 322 460 6 62 22 156 35 208 27 108 51 258 60 375 10 127 24 203 55 311 42 143 57 222 70 364 6 69 29 219 51 334 73 391 74 390 -266 393 -121 1 -233 -2 -249 -7z"/><path d="M9683 2869 c-66 -19 -88 -68 -113 -249 -6 -47 -18 -119 -26 -160 -8 -41 -19 -104 -25 -140 -5 -36 -16 -108 -25 -160 -8 -52 -19 -140 -24 -195 -6 -55 -21 -134 -35 -175 -13 -41 -29 -104 -35 -138 -6 -35 -16 -76 -21 -90 -6 -15 -14 -88 -19 -162 -4 -74 -17 -184 -29 -245 -12 -60 -33 -164 -46 -230 -26 -129 -49 -295 -49 -361 -1 -49 22 -87 67 -111 46 -26 439 -33 486 -9 46 24 80 77 92 142 6 33 19 102 30 154 17 84 44 282 64 479 9 86 31 140 61 147 36 9 101 -40 133 -99 27 -49 59 -100 171 -267 35 -52 74 -120 88 -150 69 -152 230 -368 303 -406 22 -11 87 -14 322 -14 342 0 347 1 347 85 0 62 -9 81 -114 239 -51 78 -105 165 -120 195 -15 29 -50 81 -78 115 -68 82 -244 339 -275 401 -14 28 -45 76 -69 108 -51 68 -69 121 -60 171 7 34 103 136 427 455 216 212 515 523 529 552 26 49 25 81 -1 105 -20 18 -40 19 -308 19 -345 0 -313 12 -486 -180 -65 -71 -164 -177 -220 -235 -56 -58 -126 -134 -155 -170 -156 -192 -255 -280 -317 -280 -62 0 -71 98 -23 254 35 114 70 351 70 472 0 81 -1 87 -29 115 -29 29 -29 29 -243 28 -117 0 -227 -5 -245 -10z"/><path d="M14075 2865 c-83 -41 -119 -164 -165 -549 -7 -55 -27 -173 -45 -262 -19 -89 -37 -191 -40 -226 -11 -107 -94 -697 -114 -813 -22 -125 -51 -390 -51 -466 0 -107 54 -125 339 -117 247 7 260 19 281 253 12 136 31 247 54 313 23 65 46 191 66 363 10 90 34 236 54 324 19 88 45 239 56 335 23 191 69 510 95 661 20 118 9 160 -49 184 -51 22 -438 21 -481 0z"/><path d="M15145 2868 c-83 -29 -95 -58 -130 -313 -14 -104 -32 -230 -40 -279 -8 -49 -15 -112 -15 -140 0 -28 -10 -94 -21 -146 -26 -123 -34 -176 -58 -405 -14 -136 -28 -217 -49 -285 -38 -126 -69 -280 -82 -415 -5 -60 -20 -155 -32 -210 -34 -158 -24 -205 53 -232 58 -20 1211 -18 1250 3 44 22 73 95 103 254 52 272 55 270 -306 270 -390 1 -417 16 -384 208 21 120 54 387 62 502 4 52 22 154 40 227 18 72 40 194 49 270 18 152 56 353 86 452 10 35 19 90 19 123 0 121 -18 128 -302 127 -120 0 -226 -5 -243 -11z"/><path d="M16779 2871 c-45 -14 -68 -31 -84 -60 -24 -47 -116 -600 -135 -816 -8 -81 -23 -167 -41 -230 -46 -160 -69 -278 -79 -411 -11 -132 -16 -163 -50 -314 -27 -118 -70 -416 -70 -480 0 -59 33 -104 88 -120 25 -8 225 -10 614 -8 576 3 576 3 619 33 66 47 77 69 99 198 29 174 27 231 -9 268 -29 29 -29 29 -279 29 -386 0 -409 9 -405 157 4 113 23 180 65 220 61 59 83 63 335 63 254 0 285 5 336 55 47 46 64 104 76 260 17 219 19 218 -332 225 -288 6 -305 10 -332 65 -29 63 -8 180 52 283 44 76 67 82 358 82 393 0 388 -4 416 309 20 218 73 201 -646 200 -313 0 -582 -4 -596 -8z"/></g></svg>
+      <span class="logo-badge">Demo data</span>
+    </a>
+    <nav class="nav-links">
+      <a href="https://support.quickfile.co.uk/" target="_blank" rel="noopener">Support</a>
+      <a href="https://community.quickfile.co.uk" target="_blank" rel="noopener">Community</a>
+      <a href="https://www.youtube.com/@QuickFileHelpGuides" target="_blank" rel="noopener">
+        <svg width="20" height="14" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M27.4 3.1a3.5 3.5 0 0 0-2.46-2.48C22.76 0 14 0 14 0S5.24 0 3.06.62A3.5 3.5 0 0 0 .6 3.1 36.6 36.6 0 0 0 0 10a36.6 36.6 0 0 0 .6 6.9 3.5 3.5 0 0 0 2.46 2.48C5.24 20 14 20 14 20s8.76 0 10.94-.62a3.5 3.5 0 0 0 2.46-2.48A36.6 36.6 0 0 0 28 10a36.6 36.6 0 0 0-.6-6.9z" fill="#FF0000"/><path d="M11.2 14.3V5.7L18.5 10l-7.3 4.3z" fill="#fff"/></svg>
+        YouTube
+      </a>
+      <a href="https://support.quickfile.co.uk/t/importing-clients-and-suppliers/8891" target="_blank" rel="noopener">Import guides</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-nav outline" href="https://www.quickfile.co.uk/register" target="_blank" rel="noopener">Sign Up</a>
+      <a class="btn-nav" href="https://www.quickfile.co.uk/login/search" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        Log In
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">QuickFile Demo Data &nbsp;•&nbsp; Import guide</div>
+    <h1>A Ready-Made Demo Account in Six CSV Files</h1>
+    <p>Six months of trading for a fictional Yorkshire coffee roaster: opening balances, contacts, sales, purchases and inventory. It's sized to stay well inside QuickFile's free 1,000 nominal postings.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>6</b>CSV files</div>
+      <div class="hero-stat"><b>20 / 23</b>sales / purchase invoices</div>
+      <div class="hero-stat"><b>≈ 245</b>nominal postings (max)</div>
+      <div class="hero-stat"><b>1 Apr – 30 Sep 2026</b>trading period</div>
+    </div>
+  </div>
+</section>
+
+<main class="page">
+  <div class="guide">
+    <nav class="toc" aria-label="Contents">
+      <div class="eyebrow">Contents</div>
+      <ol>
+        <li><a href="#business">The demo business</a></li>
+        <li><a href="#files">The files at a glance</a></li>
+        <li><a href="#postings">Nominal postings</a></li>
+        <li><a href="#signup">Sign up for QuickFile</a></li>
+        <li><a href="#order">Import order</a></li>
+        <li><a href="#each">Importing each file</a>
+          <ol>
+            <li><a href="#f1">Opening balances</a></li>
+            <li><a href="#f2">Clients</a></li>
+            <li><a href="#f3">Suppliers</a></li>
+            <li><a href="#f4">Sales invoices</a></li>
+            <li><a href="#f5">Purchase invoices</a></li>
+            <li><a href="#f6">Inventory items</a></li>
+          </ol>
+        </li>
+        <li><a href="#after">After importing</a></li>
+        <li><a href="#good">Good to know</a></li>
+        <li><a href="#reset">Clearing or deleting the demo account</a></li>
+      </ol>
+    </nav>
+
+    <div class="content">
+      <section id="business">
+        <div class="eyebrow">Overview</div>
+        <h2>The demo business</h2>
+        <p><strong>Harbour Lane Coffee Roasters Ltd</strong> is a made-up wholesale roaster in Yorkshire. It sells roasted beans, cups, lids, grinders, barista training and machine servicing to cafés, delis, hotels and farm shops. It buys green beans, packaging, oat drink, electricity, courier services and the usual overheads.</p>
+        <p>Its books start from a trial balance at <strong>31/03/2026</strong>, then run from April to September 2026. That gives you paid invoices, unpaid invoices and a few overdue ones to demo, plus a realistic VAT mix: coffee and oat drink at 0%, electricity at 5%, and everything else at 20%.</p>
+        <div class="callout"><strong>Every name and contact is made up.</strong> Emails use example.com, phone numbers use the Ofcom 01632 960xxx range kept for drama use, and VAT numbers are left blank. You can use it in public demos, screenshots and training videos.</div>
+      </section>
+
+      <section id="files">
+        <div class="eyebrow">Summary</div>
+        <h2>The files at a glance</h2>
+        <p>All six files are in the <span class="path">QuickFile demo data</span> folder. They're numbered in the order you import them.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>File</th><th>Contains</th><th class="r">Rows</th><th class="r">Value (gross)</th><th class="r">Postings (est.)</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><span class="kbd">01_opening_balances.csv</span></td><td>Trial balance at 31/03/2026</td><td class="r">14</td><td class="r">£71,305.60</td><td class="r">14</td></tr>
+              <tr><td>2</td><td><span class="kbd">02_clients.csv</span></td><td>12 clients with a contact each</td><td class="r">12</td><td class="r">–</td><td class="r">0</td></tr>
+              <tr><td>3</td><td><span class="kbd">03_suppliers.csv</span></td><td>10 suppliers with a contact each</td><td class="r">10</td><td class="r">–</td><td class="r">0</td></tr>
+              <tr><td>4</td><td><span class="kbd">04_sales_invoices.csv</span></td><td>20 invoices (16 paid, 4 unpaid)</td><td class="r">30</td><td class="r">£25,869.00</td><td class="r">97–112</td></tr>
+              <tr><td>5</td><td><span class="kbd">05_purchase_invoices.csv</span></td><td>23 invoices (22 paid, 1 unpaid)</td><td class="r">25</td><td class="r">£20,748.72</td><td class="r">109–117</td></tr>
+              <tr><td>6</td><td><span class="kbd">06_inventory_items.csv</span></td><td>14 reusable items</td><td class="r">14</td><td class="r">–</td><td class="r">0</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="5">Total</td><td class="r">220–243</td></tr></tfoot>
+          </table>
+        </div>
+        <p>The folder also has a <span class="kbd">README.md</span> and <span class="kbd">generate_demo_data.py</span>, a script that rebuilds every file if you want different volumes or dates.</p>
+      </section>
+
+      <section id="postings">
+        <div class="eyebrow">Posting allowance</div>
+        <h2>Nominal postings</h2>
+        <p>QuickFile is free until an account reaches 1,000 nominal postings. This data uses about a quarter of that, so there's plenty left for demoing bank feeds, tagging, journals, VAT returns and new invoices.</p>
+        <div class="meter" role="img" aria-label="About 243 of 1,000 free nominal postings used: 14 from opening balances, 112 from sales, 117 from purchases">
+          <div class="meter-head">
+            <div class="big">≈ 243 <small>of 1,000 free postings</small></div>
+            <div class="num" style="color:var(--text-muted);font-size:13.5px">757 left for live demoing</div>
+          </div>
+          <div class="bar">
+            <span style="width:1.4%;background:var(--seg-tb)"></span>
+            <span style="width:11.2%;background:var(--seg-sales)"></span>
+            <span style="width:11.7%;background:var(--seg-purch)"></span>
+          </div>
+          <div class="scale"><span style="left:0">0</span><span style="left:25%">250</span><span style="left:50%">500</span><span style="left:75%">750</span><span style="left:100%">1,000</span></div>
+          <div class="legend">
+            <span><i style="background:var(--seg-tb)"></i>Opening balances 14</span>
+            <span><i style="background:var(--seg-sales)"></i>Sales 112</span>
+            <span><i style="background:var(--seg-purch)"></i>Purchases 117</span>
+          </div>
+        </div>
+        <h3>How the estimate is worked out</h3>
+        <p>These are our own estimates, not QuickFile's figures. The higher number is a cautious worst case:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Source</th><th>Counted as</th><th class="r">Sales</th><th class="r">Purchases</th></tr></thead>
+            <tbody>
+              <tr><td>Each invoice line</td><td>1 posting to the sales or purchase code</td><td class="r">30</td><td class="r">25</td></tr>
+              <tr><td>VAT on each line</td><td>1 posting to VAT (worst case counts 0% lines too)</td><td class="r">15–30</td><td class="r">17–25</td></tr>
+              <tr><td>Each invoice</td><td>1 posting to Trade Debtors or Trade Creditors</td><td class="r">20</td><td class="r">23</td></tr>
+              <tr><td>Each payment</td><td>2 postings: bank 1200 and the control account</td><td class="r">32</td><td class="r">44</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2">Total</td><td class="r">97–112</td><td class="r">109–117</td></tr></tfoot>
+          </table>
+        </div>
+        <div class="callout"><strong>Check the real count after importing.</strong> Your account's posting total will show the actual figure. QuickFile may combine VAT postings, which would bring the total below our estimate.</div>
+      </section>
+
+      <section id="signup">
+        <div class="eyebrow">Before you start</div>
+        <h2>Sign up for QuickFile</h2>
+        <p>You'll need a QuickFile account to import the demo data. It's free to sign up, and an account stays free until it reaches 1,000 nominal postings. The demo data uses about a quarter of that.</p>
+        <div class="video-card">
+          <div class="video-icon" aria-hidden="true"><svg width="28" height="20" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg"><path d="M27.4 3.1a3.5 3.5 0 0 0-2.46-2.48C22.76 0 14 0 14 0S5.24 0 3.06.62A3.5 3.5 0 0 0 .6 3.1 36.6 36.6 0 0 0 0 10a36.6 36.6 0 0 0 .6 6.9 3.5 3.5 0 0 0 2.46 2.48C5.24 20 14 20 14 20s8.76 0 10.94-.62a3.5 3.5 0 0 0 2.46-2.48A36.6 36.6 0 0 0 28 10a36.6 36.6 0 0 0-.6-6.9z" fill="#FF0000"/><path d="M11.2 14.3V5.7L18.5 10l-7.3 4.3z" fill="#fff"/></svg></div>
+          <div><strong>Prefer to watch?</strong> The sign-up process is shown step by step in a short video on QuickFile's YouTube channel.<br><a id="signup-video" href="https://www.youtube.com/@QuickFileHelpGuides" target="_blank" rel="noopener">Watch the sign-up video</a></div>
+        </div>
+        <details class="file" id="signup-steps">
+          <summary class="file-head"><h3>Sign-up steps</h3><span class="fname">7 steps</span><span class="chev" aria-hidden="true"></span></summary>
+          <div class="file-body">
+            <ol class="order">
+              <li><div><h3>Open the sign-up page</h3><p>Go to <a href="https://www.quickfile.co.uk/register" target="_blank" rel="noopener">quickfile.co.uk/register</a>, or click <span class="path">Sign Up</span> at the top of this page.</p></div></li>
+              <li><div><h3>Choose your business type</h3><p>Pick Limited Company, Sole Trader, Partnership, Charity or Landlord. <strong>You can't change this later.</strong> The demo company is a limited company with share capital and a director's loan, so <span class="path">Limited Company</span> is the best fit for trying out the demo data.</p></div></li>
+              <li><div><h3>Enter your company details</h3><p>For a limited company, QuickFile can look up your company number at Companies House and fill in the details for you. If the lookup doesn't work, you can enter the details yourself.</p></div></li>
+              <li><div><h3>Add your name and business</h3><p>Enter your first name, surname, business name and profession. For a demo account, a test name such as "Harbour Lane Coffee Roasters Ltd" is fine. The demo files don't depend on the account name.</p></div></li>
+              <li><div><h3>Pick your client area name</h3><p>This becomes part of your QuickFile web address, so use letters and numbers only, with no spaces or symbols.</p></div></li>
+              <li><div><h3>Set your login</h3><p>Enter your email address and a password of at least 8 characters, then create the account.</p></div></li>
+              <li><div><h3>Import the demo data</h3><p>Once you're logged in, follow the <a href="#order">import order</a> below, starting with the opening balances.</p></div></li>
+            </ol>
+          </div>
+        </details>
+        <div class="callout"><strong>Use a separate account for demos.</strong> Import the demo data into a new account rather than one with real bookkeeping in it. When you've finished, you can <a href="#reset">clear or delete the demo account</a>.</div>
+      </section>
+
+      <section id="order">
+        <div class="eyebrow">Step-by-step</div>
+        <h2>Import order</h2>
+        <p>Import the files in number order. Contacts go in before invoices so that each invoice matches an existing client or supplier rather than creating a duplicate.</p>
+        <ol class="order">
+          <li><div><h3>Opening balances</h3><p>Account Settings → All Settings → Import Trial Balance, dated 31/03/2026.</p></div></li>
+          <li><div><h3>Clients</h3><p>Account Settings → Data Import Wizard → Clients.</p></div></li>
+          <li><div><h3>Suppliers</h3><p>Account Settings → Data Import Wizard → Suppliers.</p></div></li>
+          <li><div><h3>Sales invoices</h3><p>Account Settings → Data Import Wizard → Sales invoices.</p></div></li>
+          <li><div><h3>Purchase invoices</h3><p>Account Settings → Data Import Wizard → Purchase invoices.</p></div></li>
+          <li><div><h3>Inventory items</h3><p>Set these up as reusable inventory items. Import them if your account offers it, or add them by hand.</p></div></li>
+        </ol>
+      </section>
+
+      <section id="each">
+        <div class="eyebrow">File by file</div>
+        <h2>Importing each file</h2>
+        <p>Columns marked in blue are required. All dates are <span class="kbd">DD/MM/YYYY</span>, and VAT rates are whole numbers (<span class="kbd">20</span>, not <span class="kbd">20%</span> or <span class="kbd">0.2</span>).</p>
+        <div class="toggle-bar"><span>Click a file to open it.</span><button type="button" id="expand-all">Expand all</button><button type="button" id="collapse-all">Collapse all</button></div>
+
+        <details class="file" id="f1">
+          <summary class="file-head"><h3>1 · Opening balances</h3><span class="fname">01_opening_balances.csv</span><span class="chev" aria-hidden="true"></span></summary>
+          <div class="file-body">
+            <p>The trial balance on the day before trading starts: fixed assets and depreciation, stock, debtors, two bank accounts, creditors, VAT, PAYE, a director's loan, share capital and retained earnings. Debits and credits both total £71,305.60.</p>
+            <div class="facts">
+              <div class="fact"><b>14</b>nominal accounts</div>
+              <div class="fact"><b>31/03/2026</b>balance date</div>
+              <div class="fact"><b>£24,315.60</b>bank 1200</div>
+              <div class="fact post"><b>14</b>postings</div>
+            </div>
+            <div class="label">Columns</div>
+            <div class="cols"><span class="kbd req">Nominal Code</span><span class="kbd req">Account Name</span><span class="kbd req">Debit</span><span class="kbd req">Credit</span></div>
+            <div class="label">Sample rows</div>
+            <div class="table-wrap"><table class="sample">
+              <thead><tr><th>Nominal Code</th><th>Account Name</th><th class="r">Debit</th><th class="r">Credit</th></tr></thead>
+              <tbody>
+                <tr><td>0020</td><td>Plant and Machinery (coffee roaster)</td><td class="r">18500.00</td><td class="r"></td></tr>
+                <tr><td>1200</td><td>Bank Current Account</td><td class="r">24315.60</td><td class="r"></td></tr>
+                <tr><td>2200</td><td>VAT Liability</td><td class="r"></td><td class="r">2870.40</td></tr>
+              </tbody>
+            </table></div>
+            <div class="label">How to import</div>
+            <ol class="steps">
+              <li>Go to <span class="path">Account Settings → All Settings → Import Trial Balance</span>.</li>
+              <li>Pick the source format that best fits a plain four-column trial balance, and set the date to <span class="kbd">31/03/2026</span>.</li>
+              <li>Upload <span class="kbd">01_opening_balances.csv</span>.</li>
+              <li>On the preview, check the <span class="path">Map to</span> nominal for each line, especially 1210 Bank Deposit Account, 2300 Directors Loan Account and 3100 Retained Earnings.</li>
+              <li>Save. The trial balance is saved as a journal, so you can change the mapping later.</li>
+            </ol>
+            <div class="callout warn"><strong>Debtors and creditors are balances only.</strong> The opening Trade Debtors (£6,840) and Trade Creditors (£3,960) have no individual invoices behind them, so they won't appear on any client or supplier statement.</div>
+          </div>
+        </details>
+
+        <details class="file" id="f2">
+          <summary class="file-head"><h3>2 · Clients</h3><span class="fname">02_clients.csv</span><span class="chev" aria-hidden="true"></span></summary>
+          <div class="file-body">
+            <p>Twelve trade customers across Yorkshire and the North East: independent cafés, a bakery, a deli, a hotel group, a university coffee shop and a farm shop. Each has an address, an account number (CL001–CL012) and one named contact.</p>
+            <div class="facts">
+              <div class="fact"><b>12</b>clients</div>
+              <div class="fact"><b>CL001–CL012</b>account numbers</div>
+              <div class="fact zero"><b>0</b>postings</div>
+            </div>
+            <div class="label">Columns</div>
+            <div class="cols"><span class="kbd req">Company Name</span><span class="kbd">Address Line 1</span><span class="kbd">Address Line 2</span><span class="kbd">Address Line 3</span><span class="kbd">Town</span><span class="kbd">Postcode</span><span class="kbd">Country ISO Code</span><span class="kbd">VAT Number</span><span class="kbd">Account Number</span><span class="kbd">Contact first name</span><span class="kbd">Contact surname</span><span class="kbd">Contact email</span><span class="kbd">Contact telephone</span></div>
+            <div class="label">Sample rows</div>
+            <div class="table-wrap"><table class="sample">
+              <thead><tr><th>Company Name</th><th>Town</th><th>Postcode</th><th>Account Number</th><th>Contact</th><th>Contact email</th></tr></thead>
+              <tbody>
+                <tr><td>The Copper Kettle Café</td><td>Harrogate</td><td>HG1 1BB</td><td>CL001</td><td>Jess Moore</td><td>jess.moore@example.com</td></tr>
+                <tr><td>Bean &amp; Gone Ltd</td><td>Newcastle upon Tyne</td><td>NE1 3JE</td><td>CL002</td><td>Tom Ashworth</td><td>tom.ashworth@example.com</td></tr>
+                <tr><td>Little Loaf Bakery</td><td>Hebden Bridge</td><td>HX7 8AB</td><td>CL003</td><td>Priya Shah</td><td>priya.shah@example.com</td></tr>
+              </tbody>
+            </table></div>
+            <div class="label">How to import</div>
+            <ol class="steps">
+              <li>Go to <span class="path">Account Settings → Data Import Wizard</span> and choose <span class="path">Clients</span>.</li>
+              <li>Browse for <span class="kbd">02_clients.csv</span> and upload it.</li>
+              <li>The header row matches QuickFile's field names, so the column dropdowns should fill in automatically. Check them on the preview.</li>
+              <li>Click <span class="path">Save</span>.</li>
+            </ol>
+            <p style="font-size:14px;color:var(--text-muted)">A contact's first name, surname and email must all be present together. Every row in this file has all three.</p>
+          </div>
+        </details>
+
+        <details class="file" id="f3">
+          <summary class="file-head"><h3>3 · Suppliers</h3><span class="fname">03_suppliers.csv</span><span class="chev" aria-hidden="true"></span></summary>
+          <div class="file-body">
+            <p>Ten suppliers: a green bean importer, a packaging firm, an oat drink wholesaler, the landlord, an energy supplier, a courier, a broadband provider, a machinery engineer, a marketing studio and an accountant.</p>
+            <div class="facts">
+              <div class="fact"><b>10</b>suppliers</div>
+              <div class="fact"><b>SU001–SU010</b>account numbers</div>
+              <div class="fact zero"><b>0</b>postings</div>
+            </div>
+            <div class="label">Columns</div>
+            <p style="font-size:14px">Same layout as the clients file, with <span class="kbd req">Company Name</span> required.</p>
+            <div class="label">Sample rows</div>
+            <div class="table-wrap"><table class="sample">
+              <thead><tr><th>Company Name</th><th>Town</th><th>Postcode</th><th>Account Number</th><th>Contact</th></tr></thead>
+              <tbody>
+                <tr><td>Equator Green Bean Imports Ltd</td><td>Liverpool</td><td>L3 4AA</td><td>SU001</td><td>Rosa Martinez</td></tr>
+                <tr><td>Pennine Packaging Supplies</td><td>Huddersfield</td><td>HD5 0RL</td><td>SU002</td><td>Keith Barlow</td></tr>
+                <tr><td>Oat &amp; Barley Dairy Alternatives Ltd</td><td>Manchester</td><td>M17 1HP</td><td>SU003</td><td>Grace Lin</td></tr>
+              </tbody>
+            </table></div>
+            <div class="label">How to import</div>
+            <ol class="steps">
+              <li>Go to <span class="path">Account Settings → Data Import Wizard</span> and choose <span class="path">Suppliers</span>.</li>
+              <li>Upload <span class="kbd">03_suppliers.csv</span>, check the column mapping on the preview and click <span class="path">Save</span>.</li>
+            </ol>
+            <p style="font-size:14px;color:var(--text-muted)">Fibrelink Broadband Ltd has no invoices in this data set. It's there to make the supplier list look realistic.</p>
+          </div>
+        </details>
+
+        <details class="file" id="f4">
+          <summary class="file-head"><h3>4 · Sales invoices</h3><span class="fname">04_sales_invoices.csv</span><span class="chev" aria-hidden="true"></span></summary>
+          <div class="file-body">
+            <p>Twenty invoices, INV-1001 to INV-1020, dated 4 April to 18 September 2026. Ten invoices have two lines. Each line is one product with its quantity and unit price written into the description. Most are paid into bank 1200, and four are unpaid, including some past their due date.</p>
+            <div class="facts">
+              <div class="fact"><b>20</b>invoices · 30 lines</div>
+              <div class="fact"><b>£25,580.00</b>net</div>
+              <div class="fact"><b>£289.00</b>VAT</div>
+              <div class="fact"><b>16 / 4</b>paid / unpaid</div>
+              <div class="fact post"><b>97–112</b>postings</div>
+            </div>
+            <div class="label">Columns</div>
+            <div class="cols"><span class="kbd">Invoice number</span><span class="kbd req">Issue Date</span><span class="kbd req">Client name</span><span class="kbd">Account Reference</span><span class="kbd req">Description</span><span class="kbd">Sales nominal code</span><span class="kbd">VAT rate</span><span class="kbd">VAT amount</span><span class="kbd req">Total gross amount</span><span class="kbd">Term in days</span><span class="kbd">Purchase reference</span><span class="kbd">Notes</span><span class="kbd">Paid date</span><span class="kbd">Paid bank nominal code</span></div>
+            <div class="label">Sample rows</div>
+            <div class="table-wrap"><table class="sample">
+              <thead><tr><th>Invoice number</th><th>Issue Date</th><th>Client name</th><th>Description</th><th class="r">VAT rate</th><th class="r">VAT</th><th class="r">Gross</th><th>Paid date</th></tr></thead>
+              <tbody>
+                <tr><td>INV-1001</td><td>04/04/2026</td><td>Bean &amp; Gone Ltd</td><td>Ceramic burr hand grinder x 1 @ £45.00</td><td class="r">20</td><td class="r">9.00</td><td class="r">54.00</td><td>29/04/2026</td></tr>
+                <tr><td>INV-1002</td><td>10/04/2026</td><td>Brew &amp; Bloom Florist Café</td><td>Compostable paper cups 12oz - box of 1000 x 1 @ £74.00</td><td class="r">20</td><td class="r">14.80</td><td class="r">88.80</td><td>28/04/2026</td></tr>
+                <tr><td>INV-1003</td><td>19/04/2026</td><td>Northern Grind Co-operative</td><td>Compostable paper cups 8oz - box of 1000 x 3 @ £62.00</td><td class="r">20</td><td class="r">37.20</td><td class="r">223.20</td><td>27/05/2026</td></tr>
+              </tbody>
+            </table></div>
+            <div class="label">How to import</div>
+            <ol class="steps">
+              <li>Import the clients first, so each invoice finds its client by exact name or by <span class="kbd">Account Reference</span>.</li>
+              <li>Go to <span class="path">Account Settings → Data Import Wizard</span> and choose <span class="path">Sales invoices</span>.</li>
+              <li>Upload <span class="kbd">04_sales_invoices.csv</span> and check the column mapping on the preview.</li>
+              <li>Click <span class="path">Save</span>. Paid invoices are marked paid into bank 1200 on their <span class="kbd">Paid date</span>.</li>
+            </ol>
+            <p style="font-size:14px;color:var(--text-muted)">Multi-line invoices repeat the same invoice number on each row. QuickFile only takes the amount and description from the extra rows. Sales go to 4000 (goods) and 4010 (training and servicing). All 20 invoices fit in one upload, well under the limit of 250.</p>
+          </div>
+        </details>
+
+        <details class="file" id="f5">
+          <summary class="file-head"><h3>5 · Purchase invoices</h3><span class="fname">05_purchase_invoices.csv</span><span class="chev" aria-hidden="true"></span></summary>
+          <div class="file-body">
+            <p>Twenty-three supplier bills, dated 1 April to 7 September 2026. There's quarterly rent, monthly electricity and green beans, packaging, oat drink and courier bills once a quarter, and three one-offs: a roaster service, a website refresh and the year-end accounts fee. The September bean invoice is the only one still unpaid.</p>
+            <div class="facts">
+              <div class="fact"><b>23</b>invoices · 25 lines</div>
+              <div class="fact"><b>£18,564.70</b>net</div>
+              <div class="fact"><b>£2,184.02</b>VAT</div>
+              <div class="fact"><b>22 / 1</b>paid / unpaid</div>
+              <div class="fact post"><b>109–117</b>postings</div>
+            </div>
+            <div class="label">Columns</div>
+            <div class="cols"><span class="kbd req">Receipt date</span><span class="kbd req">Supplier name</span><span class="kbd">Supplier Ref</span><span class="kbd req">Description</span><span class="kbd">Purchase nominal code</span><span class="kbd">VAT rate</span><span class="kbd">VAT total</span><span class="kbd req">Total gross amount</span><span class="kbd">Term in days</span><span class="kbd">Paid date</span><span class="kbd">Paid account nominal code</span></div>
+            <div class="label">Sample rows</div>
+            <div class="table-wrap"><table class="sample">
+              <thead><tr><th>Receipt date</th><th>Supplier name</th><th>Supplier Ref</th><th>Description</th><th>Code</th><th class="r">VAT rate</th><th class="r">Gross</th></tr></thead>
+              <tbody>
+                <tr><td>01/04/2026</td><td>Yorkshire Property Holdings Ltd</td><td>YPH-2600</td><td>Unit rent - quarter from Apr 2026</td><td>7100</td><td class="r">20</td><td class="r">2700.00</td></tr>
+                <tr><td>05/04/2026</td><td>Equator Green Bean Imports Ltd</td><td>EGB-7100</td><td>Green coffee beans - mixed origins … 180kg</td><td>5000</td><td class="r">0</td><td class="r">1044.00</td></tr>
+                <tr><td>07/04/2026</td><td>Dales Energy Supply Ltd</td><td>DES-88410</td><td>Electricity - Apr 2026</td><td>7200</td><td class="r">5</td><td class="r">394.22</td></tr>
+              </tbody>
+            </table></div>
+            <div class="label">How to import</div>
+            <ol class="steps">
+              <li>Import the suppliers first, so each bill finds its supplier by exact name.</li>
+              <li>Go to <span class="path">Account Settings → Data Import Wizard</span> and choose <span class="path">Purchase invoices</span>.</li>
+              <li>Upload <span class="kbd">05_purchase_invoices.csv</span>, check the mapping and click <span class="path">Save</span>.</li>
+            </ol>
+            <p style="font-size:14px;color:var(--text-muted)">Two bills have two lines under the same <span class="kbd">Supplier Ref</span>. Codes used: 5000 cost of sales, 6201 advertising, 7100 rent, 7200 electricity, 7400 carriage, 7600 accountancy and 7800 repairs. Check these against your chart of accounts on the preview.</p>
+          </div>
+        </details>
+
+        <details class="file" id="f6">
+          <summary class="file-head"><h3>6 · Inventory items</h3><span class="fname">06_inventory_items.csv</span><span class="chev" aria-hidden="true"></span></summary>
+          <div class="file-body">
+            <p>Fourteen reusable items that match what's on the sales invoices: eight coffee and oat drink lines at 0% VAT, and six standard-rated lines (cups, lids, a grinder, training and servicing). Each item has a sale price and a cost price, so it works well for demoing margins.</p>
+            <div class="facts">
+              <div class="fact"><b>14</b>items</div>
+              <div class="fact"><b>8 / 6</b>0% / 20% VAT</div>
+              <div class="fact zero"><b>0</b>postings</div>
+            </div>
+            <div class="label">Columns</div>
+            <div class="cols"><span class="kbd">Item Name</span><span class="kbd">Description</span><span class="kbd">Unit Price</span><span class="kbd">VAT Rate</span><span class="kbd">Sales Nominal Code</span><span class="kbd">Purchase Price</span><span class="kbd">Purchase Nominal Code</span><span class="kbd">Quantity In Stock</span></div>
+            <div class="label">Sample rows</div>
+            <div class="table-wrap"><table class="sample">
+              <thead><tr><th>Item Name</th><th>Description</th><th class="r">Unit Price</th><th class="r">VAT</th><th class="r">Cost</th></tr></thead>
+              <tbody>
+                <tr><td>HOUSE-ESP-1KG</td><td>House Espresso Blend - roasted whole bean 1kg</td><td class="r">18.50</td><td class="r">0</td><td class="r">8.20</td></tr>
+                <tr><td>CUP-8OZ-1000</td><td>Compostable paper cups 8oz - box of 1000</td><td class="r">62.00</td><td class="r">20</td><td class="r">38.00</td></tr>
+                <tr><td>TRAIN-HALF</td><td>Barista training - half day on site</td><td class="r">180.00</td><td class="r">20</td><td class="r">0.00</td></tr>
+              </tbody>
+            </table></div>
+            <div class="label">How to set them up</div>
+            <ol class="steps">
+              <li>If your account has an inventory import, upload <span class="kbd">06_inventory_items.csv</span> and map the columns on the preview.</li>
+              <li>If not, create each item as a reusable inventory item using the <span class="path">Item Name</span>, <span class="path">Description</span>, <span class="path">Unit Price</span> and <span class="path">VAT Rate</span> from the file.</li>
+            </ol>
+            <div class="callout warn"><strong>This column layout is our best guess.</strong> QuickFile's help pages don't document a CSV import for inventory items, so you may need to rename or drop columns to match what the importer expects.</div>
+          </div>
+        </details>
+      </section>
+
+      <section id="after">
+        <div class="eyebrow">Checking</div>
+        <h2>After importing</h2>
+        <ul>
+          <li><strong>Trial balance:</strong> run it at 31/03/2026. It should match the opening balances file, with debits and credits of £71,305.60.</li>
+          <li><strong>Aged debtors:</strong> should show the 4 unpaid sales invoices.</li>
+          <li><strong>Aged creditors:</strong> should show the September green bean invoice.</li>
+          <li><strong>VAT return:</strong> the April–June and July–September quarters both have 0%, 5% and 20% items, which makes them useful to demo.</li>
+          <li><strong>Posting count:</strong> should be around 220–245. Anything much higher usually means a file was imported twice.</li>
+        </ul>
+      </section>
+
+      <section id="good">
+        <div class="eyebrow">Additional information</div>
+        <h2>Good to know</h2>
+        <ul class="good-list">
+          <li><strong>Column headers match QuickFile's field names</strong>, so the import wizard should map most columns without you choosing them.</li>
+          <li><strong>Payments are included in the invoice files.</strong> A <span class="kbd">Paid date</span> marks the invoice paid into bank 1200. Leave those columns blank if you'd rather demo recording payments by hand.</li>
+          <li><strong>Bank statements aren't included.</strong> Paid invoices post straight to bank 1200. If you import a bank statement too, tag its lines to these payments so they aren't counted twice.</li>
+          <li><strong>Need more or less data?</strong> Change the volumes or dates in <span class="kbd">generate_demo_data.py</span> and run it to rebuild all six files with the same structure.</li>
+        </ul>
+      </section>
+
+      <section id="reset">
+        <div class="eyebrow">When you've finished</div>
+        <h2>Clearing or deleting the demo account</h2>
+        <p>When you've finished with the demo, you can wipe the data and start again, or close the account completely. Both are done from the same screen.</p>
+        <div class="callout warn"><strong>This can't be undone.</strong> Once you clear the account, the data is gone for good. If you want to keep a copy first, run a backup from <span class="path">Account Settings → All Settings → Monthly Backups</span>.</div>
+
+        <h3>Clear the data and start again</h3>
+        <ol class="order">
+          <li><div><h3>Open the clearing tool</h3><p>Go to <span class="path">Account Settings → All Settings</span> and choose <span class="path">Clear all data in your account</span>.</p></div></li>
+          <li><div><h3>Choose what to keep</h3><p>You can clear everything, or clear everything except your clients and suppliers. Keeping them means you can re-import the invoices from files 04 and 05 without importing files 02 and 03 again.</p></div></li>
+          <li><div><h3>Run the clearing procedure</h3><p>Your sales, purchases, invoices and ledger postings are deleted, and the account goes back to how it was when it was new. Your invoice design and other settings you've changed are kept.</p></div></li>
+          <li><div><h3>Import again (optional)</h3><p>Follow the <a href="#order">import order</a> above to reload a fresh copy of the demo data.</p></div></li>
+        </ol>
+
+        <h3>Delete the account completely</h3>
+        <p>On the same clearing screen, tick the extra option to permanently delete your account. After the clearing procedure runs, the account is purged and closed.</p>
+        <p>You can also use your right to be forgotten under GDPR. That goes further than closing the account: it deletes all of your personal details from QuickFile.</p>
+        <p style="font-size:14px;color:var(--text-muted)">Full details are in QuickFile's guide <a href="https://support.quickfile.co.uk/t/how-do-i-clear-my-account/8898" target="_blank" rel="noopener">How do I clear my account?</a></p>
+      </section>
+
+      <footer class="site-foot"><span>Based on QuickFile's guides to <a href="https://support.quickfile.co.uk/t/importing-clients-and-suppliers/8891" target="_blank" rel="noopener">importing clients and suppliers</a>, <a href="https://support.quickfile.co.uk/t/importing-sales-and-purchase-invoices/8885" target="_blank" rel="noopener">importing sales and purchase invoices</a> and <a href="https://support.quickfile.co.uk/t/importing-data-from-another-system/8936" target="_blank" rel="noopener">importing data from another system</a> and <a href="https://support.quickfile.co.uk/t/how-do-i-clear-my-account/8898" target="_blank" rel="noopener">clearing your account</a>.</span><span>Fictional demo data</span></footer>
+    </div>
+  </div>
+</main>
+
+<script>
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('#each details.file'));
+  function openFromHash(){
+    var id=(location.hash||'').slice(1); if(!id) return;
+    var el=document.getElementById(id);
+    if(el && el.tagName==='DETAILS'){ el.open=true; el.scrollIntoView(); }
+  }
+  document.querySelectorAll('a[href^="#f"]').forEach(function(a){
+    a.addEventListener('click',function(){
+      var el=document.getElementById(a.getAttribute('href').slice(1));
+      if(el && el.tagName==='DETAILS') el.open=true;
+    });
+  });
+  document.getElementById('expand-all').addEventListener('click',function(){cards.forEach(function(c){c.open=true;});});
+  document.getElementById('collapse-all').addEventListener('click',function(){cards.forEach(function(c){c.open=false;});});
+  window.addEventListener('hashchange',openFromHash);
+  openFromHash();
+})();
+</script>
